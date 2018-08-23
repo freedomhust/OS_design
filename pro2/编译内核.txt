@@ -1,0 +1,61 @@
+1.df -hl
+查看boot分区剩余空间，保证有60MB左右即可
+
+2.uname -a or cat /proc/version
+查看当前系统的内核版本
+
+3.https://mirrors.edge.kernel.org/pub/linux/kernel/
+点击网址在里面找一个和自己系统相似的版本进行下载
+
+4.cp *.tar /usr/src
+下载完成后利用cp命令将下载好的压缩包拷贝到 /usr/src 目录下
+
+5.cd /usr/src 
+切换目录
+
+xz -d *tar.xz
+若压缩包是tar.xz后缀请使用此命令将压缩包解压成tar后缀
+
+tar -zxvf *.tar 
+将压缩包解压成相应文件夹
+
+rm *.tar
+将压缩包删除
+
+6.ls /usr/src
+ls命令查看目录文件
+
+cp /usr/src/linux-headers-*-generic/.config /usr/src/linux-4.***
+找到与当前内核版本一样的linux-headers-*-generic目录，存在.config文件，将此文件利用cp命令转移到刚刚解压好的文件夹下
+
+7.sudo apt-get install ncurses-devel
+sudo apt-get install libncurses5-dev
+安装相应的包
+
+8.make menuconfig
+生成内核配置文件，在出现的界面直接一步步选择[load]–>[OK]–>[Save]–>[OK]–>[EXIT]–>[EXIT]即可
+
+9.make bzImage -j256/128
+编译内核映像，后面的-jN代表速度，自己电脑带的动就用256,带不动就选128吧，比较耗时，自己跑的时候选了256结果电脑卡死了
+
+if（遇到报错）{
+sudo apt-get install libelf-dev
+if（还继续报错）
+sudo apt-get install libssl-dev
+}
+
+10.make modules -j256/128
+编译内核模块，也比较耗时
+
+11.make modules_install 
+生成并安装模块
+
+12.make install    	
+安装新的系统
+
+13.mkinitramfs 4.4.128 -o /boot/initrd.img-4.4.128
+update-grub2
+将已经编译好的内核作为默认的启动内核/或者直接用ppt上老师的办法也可以
+
+14.重新启动，选择新编译的内核，再用uname -a就可以看到内核已经被切换了
+
