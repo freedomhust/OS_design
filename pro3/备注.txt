@@ -1,0 +1,9 @@
+1.用mknod命令分配设备号的设备文件如果要删除需要用rm -f modulename进行删除，直接将/dev下的文件删除是不行的
+
+2.利用insmod命令添加的设备驱动模块要卸载需要用rmmod modulename命令进行卸载
+
+3.在我使用make命令时会有.*.cmd的隐藏文件产生，想要删除则不能用rm -f *.cmd而应该用rm -f .*.cmd进行删除
+
+4.makefile文件名M一定要大写这样才能和老师ppt上的Makefile对应
+
+5.make命令时若出现missing separator这样的错误，原因是报错的行开头没有打上tab，将该行最开头打上TAB即可
