@@ -26,7 +26,7 @@ int main(void){
     window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     gtk_window_set_resizable(GTK_WINDOW(window),TRUE);
     gtk_window_set_position(GTK_WINDOW(window),GTK_WIN_POS_NONE);
-    g_signal_connect(G_OBJECT(window),"destory",G_CALLBACK(destory_progress),NULL);
+    g_signal_connect(G_OBJECT(window),"delete_event",G_CALLBACK(destory_progress),NULL);
     gtk_window_set_title(GTK_WINDOW(window),"系统时间");
     gtk_container_set_border_width(GTK_CONTAINER(window),20);
     vbox = gtk_vbox_new(FALSE,10);
