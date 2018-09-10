@@ -17,7 +17,7 @@ static ssize_t my_write(struct file *file, const char __user *user, size_t t, lo
 
 char message[MAX_SIZE] = "--------welcome---------";
 int device_num;//设备号
-char* devName = "myDrive";//设备名
+char* devName = "mydev";//设备名
 
 struct file_operations pStruct = 
 {
@@ -68,7 +68,7 @@ void cleanup_module()
 /***打开***/
 int my_open(struct inode *inode, struct file *file)
 {
-    printk("open myDrive OK ! \n");
+    printk("open mydev OK ! \n");
     try_module_get(THIS_MODULE);//判断module模块是否处于活动状态，将该模块的引用计数加1
     return 0;
 }

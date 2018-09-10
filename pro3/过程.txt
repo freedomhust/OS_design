@@ -1,0 +1,7 @@
+1.使用insmod mydev.ko装载模块，使用命令lsmod查看当前模块
+
+2.使用dmesg命令查看装载相关信息
+
+3.使用命令mknod /dev/mydev c 246 0加入设备，ls /dev查看设备
+
+4../test进行测试
