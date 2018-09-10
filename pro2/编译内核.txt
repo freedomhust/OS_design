@@ -35,7 +35,7 @@ sudo apt-get install libncurses5-dev
 8.make menuconfig
 生成内核配置文件，在出现的界面直接一步步选择[load]–>[OK]–>[Save]–>[OK]–>[EXIT]–>[EXIT]即可
 
-9.make bzImage -j256/128
+9.make bzImage -j4
 编译内核映像，后面的-jN代表速度，自己电脑带的动就用256,带不动就选128吧，比较耗时，自己跑的时候选了256结果电脑卡死了
 
 if（遇到报错）{
@@ -44,7 +44,7 @@ if（还继续报错）
 sudo apt-get install libssl-dev
 }
 
-10.make modules -j256/128
+10.make modules -j4
 编译内核模块，也比较耗时
 
 11.make modules_install 

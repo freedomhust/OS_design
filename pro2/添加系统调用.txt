@@ -1,0 +1,11 @@
+1.在/usr/src/linux-4.4.128/kernel/sys.c文件中添加sys_copy的源码
+
+2./usr/src/linux-4.4.128/include/asm-generic/syscalls.h 
+增加新系统调用的函数定义：
+#ifndef sys_copy
+asmlinkage int sys_copy(const char* s_file, char* t_file);
+#endif
+
+3./usr/src/linux-4.4.128/arch/x86/entry/syscalls/syscall_64.tbl 系统调用表
+在系统调用表中为新增的系统调用分配一个系统调用号和系统调用名。
+326     common  mycall                  sys_copy
